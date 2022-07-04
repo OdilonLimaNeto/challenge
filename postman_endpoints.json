@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "42d747c9-70ca-4fa5-8a6f-2408c5070ab6",
+		"name": "clean architecture api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18604079"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Add Account",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Odilon Lima\",\n  \"email\": \"odilongeronimoo@gmail.com\",\n  \"phone\": \"68981215219\",\n  \"password\": \"123456\",\n  \"passwordConfirmation\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/account",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"account"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjhkYjkyNmY2LTc2ODItNGIzOS05MTE1LTBiNjAxNTg4ZGE3YiIsImlhdCI6MTY1NjkwMTA1MywiZXhwIjoxNjU5NDkzMDUzfQ.AYxTOTk1xYft0kZg1n_uKtYs1BYT5oMaWBk0cB-rYHs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Odilon Lima Neto\",\n  \"email\": \"odilongeronimoo@gmail.com\",\n  \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/account/e27e9ba4-4456-4f71-ba87-dbbe7a9a3ac0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"account",
+								"e27e9ba4-4456-4f71-ba87-dbbe7a9a3ac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Account",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyN2U5YmE0LTQ0NTYtNGY3MS1iYTg3LWRiYmU3YTlhM2FjMCIsImlhdCI6MTY1NjkwMTgyNiwiZXhwIjoxNjU5NDkzODI2fQ.SphX_AJ_7nK7DB-bNHaSl4XBNGwOO2ze8wXeRa28k9Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/account/e27e9ba4-4456-4f71-ba87-dbbe7a9a3ac0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"account",
+								"e27e9ba4-4456-4f71-ba87-dbbe7a9a3ac0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Account",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyN2U5YmE0LTQ0NTYtNGY3MS1iYTg3LWRiYmU3YTlhM2FjMCIsImlhdCI6MTY1NjkwMTgyNiwiZXhwIjoxNjU5NDkzODI2fQ.SphX_AJ_7nK7DB-bNHaSl4XBNGwOO2ze8wXeRa28k9Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/account/e27e9ba4-4456-4f71-ba87-dbbe7a9a3ac0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"account",
+								"e27e9ba4-4456-4f71-ba87-dbbe7a9a3ac0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Access",
+			"item": [
+				{
+					"name": "Get Amout Access",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyN2U5YmE0LTQ0NTYtNGY3MS1iYTg3LWRiYmU3YTlhM2FjMCIsImlhdCI6MTY1NjkwMTgyNiwiZXhwIjoxNjU5NDkzODI2fQ.SphX_AJ_7nK7DB-bNHaSl4XBNGwOO2ze8wXeRa28k9Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/find-amount-access",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"find-amount-access"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Increment Access",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImUyN2U5YmE0LTQ0NTYtNGY3MS1iYTg3LWRiYmU3YTlhM2FjMCIsImlhdCI6MTY1NjkwMTgyNiwiZXhwIjoxNjU5NDkzODI2fQ.SphX_AJ_7nK7DB-bNHaSl4XBNGwOO2ze8wXeRa28k9Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/increment-access",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"increment-access"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"odilongeronimoo@gmail.com\",\n  \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
