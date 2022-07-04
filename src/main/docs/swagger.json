@@ -1,0 +1,348 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API TON",
+    "description": "A API tem como objetivo a manipulação dos dados do sistema de visão de acessos do site do TON.",
+    "contact": {
+      "email": "odilongeronimoo@gmail.com"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "BASE URL API"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "description": "Rota responsavel pelo login de um usúario.",
+        "tags": [
+          "Login"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              },
+              "examples": {
+                "company": {
+                  "value": {
+                    "email": "admin@email.com",
+                    "password": "admin"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "BadRequest"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Auth"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account": {
+      "post": {
+        "summary": "Criar conta",
+        "description": "Rota responsavel por criar conta.",
+        "tags": [
+          "Account"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              },
+              "examples": {
+                "account": {
+                  "value": {
+                    "name": "Odilon Lima",
+                    "email": "odilongeronimoo@gmail.com",
+                    "password": "123456",
+                    "passwordConfirmation": "123456",
+                    "phone": "68981215219"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/{id}": {
+      "get": {
+        "summary": "Listagem de conta por ID",
+        "description": "Rota responsavel por listar a conta por ID.",
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da conta.",
+            "required": true
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Atualização de conta por ID",
+        "description": "Rota responsavel pela atualizacação de uma conta.",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID da conta que será atualizada",
+            "required": true
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "default": {
+            "description": "Conta Atualizada com sucesso"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "description": "Dados da conta para atualização",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Account"
+              },
+              "examples": {
+                "company": {
+                  "value": {
+                    "name": "Odilon Lima",
+                    "email": "odilongeronimoo@gmail.com",
+                    "password": "123456",
+                    "passwordConfirmation": "123456",
+                    "phone": "68981215219"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Exclusão de uma conta por ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "description": "Rota responsavel por excluir uma conta.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Id da conta que vai ser excluida",
+            "required": true
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "204": {
+            "description": "Conta excluida com sucesso"
+          },
+          "400": {
+            "description": "BadRequest"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/find-amount-access": {
+      "get": {
+        "summary": "Buscando quantidade de acessos",
+        "description": "Rota responsavel por buscar a quantidade de acessos no site do TON.",
+        "tags": [
+          "Access"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Key does not exist in count api"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "The number of hits to the TON website is: 1"
+          }
+        }
+      }
+    },
+    "/increment-amount-access": {
+      "get": {
+        "summary": "Incrementa acesso",
+        "description": "Rota responsavel por incrementar a quantidade de acessos no site do TON.",
+        "tags": [
+          "Access"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "403": {
+            "description": "Forbidden"
+          },
+          "400": {
+            "description": "Key does not exist in count api"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "increased access to the TON website and the updated value is: 2"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Account": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "passwordConfirmation": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        }
+      },
+      "Login": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "Auth": {
+        "user": {
+          "name": "string",
+          "email": "string",
+          "id": "string"
+        },
+        "accessToken": "string"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
